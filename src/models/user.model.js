@@ -15,6 +15,18 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    number: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+    photo: {
+        type: URL,
+        required: false,
     }
 },{
     timestamps: true //Sirve para que devuelva la fecha de creación y actualización de los datos
