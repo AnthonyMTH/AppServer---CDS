@@ -21,3 +21,26 @@ export const createPost = async (req, res) => {
 
     res.json(savedPost)
 }
+
+export const getPost = async (req, res) => {
+    const postFound = await Post.findById(req.params.id)
+    if (!postFound) return res.status(404).json({message: 'Post not found'})
+
+    res.json(postFound)
+}
+
+export const updatePost = async (req, res) => {
+    const postFound = await Post.findByIdAndUpdate(req.params.id, req.body, {
+        new: true   // Devuelve el dato nuevo
+    })
+    if (!postFound) return res.status(404).json({message: 'Post not found'})
+
+    res.json(postFound)
+}
+
+export const deletePost = async (req, res) => {
+    const postFound = await Post.findByIdAndDelete(req.params.id)
+    if (!postFound) return res.status(404).json({message: 'Post not found'})
+
+    res.sendStatus(204)
+}
