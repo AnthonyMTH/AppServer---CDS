@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Esquema de los usuarios servira mas adelante
 const userSchema = new mongoose.Schema({
     username: {
         type: String, 
@@ -28,8 +29,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     }
-},{
-    timestamps: true //Sirve para que devuelva la fecha de creación y actualización de los datos
+}, {
+    timestamps: true
 })
 
-export default mongoose.model('User', userSchema); 
+export default mongoose.model('User', userSchema) //Crea una coleccion de usuarios y los guarda en objeto, lo hace mongoose
