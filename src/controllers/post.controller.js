@@ -1,8 +1,8 @@
 import Post from '../models/post.model.js'
 
 export const getPosts = async (req, res) => {
-    const posts = Post.find({
-        user: req.user.id       // Funciona como un where
+    const posts = await Post.find({
+        user: req.user.id
     }).populate('user')         // Dame los datos del usuario
 
     res.json(posts)
