@@ -1,11 +1,13 @@
 import express, { json } from 'express'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser';
+import cors from 'cors'
 import authRoutes from './routes/auth.routes.js';
 import postsRoutes from './routes/posts.routes.js'
 
 const app = express()
 
+app.use(cors())     // que todos los dominios se comuniquen en este servidor
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser()) 
