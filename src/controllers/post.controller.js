@@ -1,9 +1,15 @@
 import Post from '../models/post.model.js'
 
-export const getPosts = async (req, res) => {
+export const getMyPosts = async (req, res) => {
     const posts = await Post.find({
         user: req.user.id
     }).populate('user')         // Dame los datos del usuario
+
+    res.json(posts)
+}
+
+export const getAllPosts = async (req, res) => {
+    const posts = await Post.find()
 
     res.json(posts)
 }
