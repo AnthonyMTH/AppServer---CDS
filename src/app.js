@@ -7,7 +7,10 @@ import postsRoutes from './routes/posts.routes.js'
 
 const app = express()
 
-app.use(cors())     // que todos los dominios se comuniquen en este servidor
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}))     // que todos los dominios se comuniquen en este servidor
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser()) 
