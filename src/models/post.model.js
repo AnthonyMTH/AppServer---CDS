@@ -11,8 +11,9 @@ const postSchema = new mongoose.Schema({
         required: true,
     },
     photo: {
-        type: String,
-        required: false,
+        url: String,
+        public_id: String,
+        required: true,
     },
     date: {
         type: Date,
