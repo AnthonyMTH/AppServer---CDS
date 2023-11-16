@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
     },
     description: {
         type: String,
@@ -13,7 +13,6 @@ const postSchema = new mongoose.Schema({
     photo: {
         url: String,
         public_id: String,
-        required: true,
     },
     date: {
         type: Date,
