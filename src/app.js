@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors'
 import authRoutes from './routes/auth.routes.js';
 import postsRoutes from './routes/posts.routes.js'
+import chatsRoutes from './routes/chats.routes.js'
+import messagesRoutes from './routes/messages.routes.js'
 import fileUpload from 'express-fileupload'
 
 const app = express()
@@ -22,5 +24,7 @@ app.use(fileUpload({
 
 app.use('/api', authRoutes)
 app.use('/api', postsRoutes)
+app.use('/api', chatsRoutes)
+app.use('/api', messagesRoutes)
 
 export default app
