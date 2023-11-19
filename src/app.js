@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes.js';
 import postsRoutes from './routes/posts.routes.js'
 import chatsRoutes from './routes/chats.routes.js'
 import messagesRoutes from './routes/messages.routes.js'
+import userRoutes from './routes/user.routes.js'
 import fileUpload from 'express-fileupload'
 
 const app = express()
@@ -26,5 +27,6 @@ app.use('/api', authRoutes)
 app.use('/api', postsRoutes)
 app.use('/api', chatsRoutes)
 app.use('/api', messagesRoutes)
+app.use('/api', userRoutes)
 
 export default app
