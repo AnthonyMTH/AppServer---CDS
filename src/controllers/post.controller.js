@@ -17,7 +17,7 @@ export const getAllPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const { description, photo, date } = req.body
+    const { title,description, photo, date } = req.body
     let image
 
     if (req.files.image) {
@@ -30,6 +30,7 @@ export const createPost = async (req, res) => {
     }
 
     const newPost = new Post({
+        title,
         description,
         photo: image,
         date,
