@@ -8,7 +8,10 @@ cloudinary.config({
 
 export const uploadImage = async filepath => {
     return await cloudinary.uploader.upload(filepath, {
-        folder: 'posts'
+        folder: 'posts',
+        transformation: [
+            { width: 500, height: 300, crop: "limit", format: "webp" },
+        ]
     })
 }
 
