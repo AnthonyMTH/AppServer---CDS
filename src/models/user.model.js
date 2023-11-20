@@ -26,8 +26,8 @@ const userSchema = new mongoose.Schema({
         required: false,
     },
     photo: {
-        type: String,
-        required: false,
+        url: String,
+        public_id: String,
     }
 }, {
     timestamps: true
