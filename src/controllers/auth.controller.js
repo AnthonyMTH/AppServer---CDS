@@ -91,6 +91,7 @@ export const profile = async (req,res) =>{
     email: userFound.email,
     address: userFound.address,
     phone: userFound.phone,
+    photo: userFound.photo,
     createdAt: userFound.createdAt,
     updatedAt: userFound.updatedAt
   })
@@ -113,6 +114,7 @@ export const verifyToken = async (req,res) => {
       email: userFound.email,
       address: userFound.address, 
       phone: userFound.phone,
+      photo: userFound.photo,
     });
   })
 };
