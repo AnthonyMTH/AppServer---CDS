@@ -53,12 +53,42 @@ export const getPost = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
-  const postFound = await Post.findByIdAndUpdate(req.params.id, req.body, {
-    new: true, // Devuelve el dato nuevo
-  });
-  if (!postFound) return res.status(404).json({ message: "Post not found" });
+	try{
+    const { description, photo, date } = req.body;
+    let image = null;
 
-  res.json(postFound);
+		if(req.files){
+			if (req.files.image) {
+					const result = await uploadImage(req.files.image.tempFilePath)
+					image = {
+							url: result.secure_url,
+							public_id: result.public_id
+					}
+					await fs.remove(req.files.image.tempFilePath)
+			}
+	
+			req.body = ({
+				description,
+				photo: image,
+				date,
+			})
+		} else{
+			req.body = ({
+				description,
+				date,
+			}) 
+		}
+	
+		const postFound = await Post.findByIdAndUpdate(req.params.id, req.body, {
+			new: true, // Devuelve el dato nuevo
+		});
+		if (!postFound) return res.status(404).json({ message: "Post not found" });
+	
+		res.json(postFound);
+
+	} catch (error) {
+    res.status(500).json(error);
+  }
 };
 
 export const deletePost = async (req, res) => {
