@@ -58,13 +58,13 @@ export const updatePost = async (req, res) => {
     let image = null;
 
 		if(req.files){
-			if (req.files.image) {
-					const result = await uploadImage(req.files.image.tempFilePath)
+			if (req.files?.photo) {
+					const result = await uploadImage(req.files.photo.tempFilePath)
 					image = {
 							url: result.secure_url,
 							public_id: result.public_id
 					}
-					await fs.remove(req.files.image.tempFilePath)
+					await fs.remove(req.files.photo.tempFilePath)
 			}
 	
 			req.body = ({
