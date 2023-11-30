@@ -1,17 +1,34 @@
 import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema(
+  {
     chatId: {
-        type: String,
+      type: String,
     },
     senderId: {
-        type: String,
+      type: String,
     },
     text: {
-        type: String,
+      type: String,
     },
-}, {
-    timestamps: true
-})
+    location: {
+      type: {
+        type: String, // Tipo de geometría (en este caso, "Point")
+        enum: ["Point"],
+        required: false,
+      },
+      coordinates: {
+        type: [Number], // [Longitud, Latitud]
+        required: false,
+      },
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-export default mongoose.model('Message', messageSchema)
+// Índice geoespacial para consultas de proximidad
+messageSchema.index({ location: "2dsphere" });
+
+export default mongoose.model("Message", messageSchema);
